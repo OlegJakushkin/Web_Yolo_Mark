@@ -12,7 +12,8 @@ from logging.handlers import TimedRotatingFileHandler
 def main(p=80):
     port = os.getenv('FLASK_PORT', str(p))
     addr = os.getenv('FLASK_ADDR', '0.0.0.0')
-    logpath = os.getenv('DB_PATH', "./db/web.log")
+    logpath = os.getenv('DB_PATH', "./db/")
+    logpath += 'web.log'
     """"""
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)

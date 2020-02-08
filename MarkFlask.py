@@ -49,7 +49,8 @@ class WallApp(Flask):
 class ConfigClass(object):
     # Flask settings
     SECRET_KEY = os.getenv('SECRET_KEY', 'T#IS IS @N 666 sECRET')
-    dbpath = os.getenv('DB_PATH', "db/db.sqlite")
+    dbpath = os.getenv('DB_PATH', "db/")
+    dbpath += 'db.sqlite'
 
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite:///'+dbpath)
 
@@ -66,9 +67,9 @@ class ConfigClass(object):
     DROPZONE_ALLOWED_FILE_CUSTOM = True
     DROPZONE_ALLOWED_FILE_TYPE = 'image/*'
     DROPZONE_REDIRECT_VIEW = 'results'
-    
-    dbpath = os.getenv('DB_PATH', os.getcwd() + '/uploads')
-    UPLOADED_PHOTOS_DEST = dbpath
+
+    imgpath = os.getenv('IMG_PATH', os.getcwd() + '/uploads')
+    UPLOADED_PHOTOS_DEST = imgpath
 
     TEMPLATES_AUTO_RELOAD = True
     DROPZONE_MAX_FILE_SIZE = 20
