@@ -6,7 +6,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_admin.contrib.sqla.filters import BaseSQLAFilter
 from flask_login import current_user
 from wtforms import PasswordField
-
+from transliterate import translit
 from MarkDatabase import *
 
 
@@ -85,7 +85,7 @@ class UploadImagesView(BaseRoledView):
             file_obj = request.files
             for f in file_obj:
                 file = request.files.get(f)
-
+                file.filename = translit(file.filename , reversed=True)
                 # save the file with to our photos folder
                 filename = self.photos.save(file)
                 im = Image.open(file.stream)
