@@ -85,7 +85,10 @@ class UploadImagesView(BaseRoledView):
             file_obj = request.files
             for f in file_obj:
                 file = request.files.get(f)
-                file.filename = translit(file.filename , reversed=True)
+                try:
+                    file.filename = translit(file.filename , reversed=True,  fail_silently=True)
+                except:
+                    pass
                 # save the file with to our photos folder
                 filename = self.photos.save(file)
                 im = Image.open(file.stream)
