@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="generator" content="Bootstrap Listr">
+    <title>Разметка изображений</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/listr.pack.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.filer.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shards-dashboards.1.1.0.min.css') }}">
+</head>
+<body dir="ltr">
+{% raw %}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<div class="container-fluid">
+    <div class="row" ng-app="myApp" ng-controller="customersCtrl">
+        <!-- Main Sidebar -->
+        <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+            <div class="main-navbar">
+                <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
+                    <a class="navbar-brand w-100 mr-0" href="/" style="line-height: 25px;">
+                        <div class="d-table m-auto">
+                            <span class="d-none d-md-inline ml-1">Разметка изображений</span>
+                            <br/>
+                            <small class="pull-xs-left text-muted" dir="ltr">Всего файлов {{info.file}}</small>
+                        </div>
+                    </a>
+                </nav>
+            </div>
+            <div class="nav-wrapper">
+                <ul class="nav flex-column">
+                    <li class="nav-item" ng-repeat="entry in names" ng-mouseover="row = $index" ng-mouseleave="row = -1"
+                        ng-click="getView(entry)">
+                        <a class="nav-link active" href="#">
+                            <span>{{entry.name}}</span>
+                        </a>
+                    </li>
+                </ul>
+                <br/>
+                <div class="d-table m-auto btn-group btn-group-toggle mb-3">
+                    <button class="btn btn-white" type="button" id="before"> Назад</button>
+                    <button class="btn btn-white" type="button" id="after"> Вперед</button>
+                </div>
+            </div>
+        </aside>
+        <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+            <div class="main-content-container">
+                <div class="page-header row no-gutters">
+                    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                        <div id="modal-body" style="height:100vh;width:100vw">
+                            <iframe id="iframe-id" width="99%" src="" name="iframe_modal"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</div>
+
+<script>
+    var counter = 1;
+
+
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function ($scope, $http) {
+        $("#before").click(function () {
+            temp_counter = counter - 1;
+            if (temp_counter >= 1) {
+                counter = temp_counter;
+                $http.get("/api/v1/FilesREST/" + counter)
+                    .then(function (response) {
+                        $scope.names = response.data.contents;
+                        $scope.info = response.data.total;
+                    });
+            }
+        });
+
+        $("#after").click(function () {
+            temp_counter = counter + 1
+            if (temp_counter <= $scope.info.files / $scope.info.pglen + 1) {
+                counter = temp_counter;
+                $http.get("/api/v1/FilesREST/" + counter)
+                    .then(function (response) {
+                        $scope.names = response.data.contents;
+                        $scope.info = response.data.total;
+                    });
+            }
+        });
+
+        $http.get("/api/v1/FilesREST/0")
+            .then(function (response) {
+                $scope.names = response.data.contents;
+                $scope.info = response.data.total;
+                $scope.getView($scope.names[0])
+            });
+
+        $scope.getView = function (entry) {
+            var file = entry
+            $("#iframe-id").remove();
+            $("#modal-body").append('<iframe width=\"100%\" height=\"100%\" id=\"iframe-id\" src=\"assets/editor/yolo_mark.html?name=' + file.name + '\">');
+        };
+    });
+</script>
+
+{% endraw %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/tether.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/listr.pack.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.filer.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.base64.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/shards-dashboards.1.1.0.min.js') }}"></script>
+</body>
+</html>
+
+

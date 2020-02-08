@@ -1,0 +1,15 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+    {{ dropzone.load_css() }}
+    {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
+    <h1>Перетащите изображения в рамку для загрузки в систему</h1>
+    {{ dropzone.create(action='/uploadimagesview/') }}
+    {{ dropzone.load_js() }}
+    <script>
+
+        with (Dropzone.prototype.defaultOptions) {
+            dictDefaultMessage = "Перетащите изображения для загрузки в систему.";
+        }
+        ;
+    </script>
+{% endblock %}
