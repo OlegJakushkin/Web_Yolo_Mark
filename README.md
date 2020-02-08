@@ -5,7 +5,7 @@ GUI for marking bounded boxes of objects in images for training neural network l
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Docker Pulls](https://img.shields.io/docker/pulls/olejak/web_mark_yolo)](https://hub.docker.com/r/olejak/web_mark_yolo)
 
-[!How to use this (in russian)](https://docs.google.com/presentation/d/e/2PACX-1vQrO13OqmhA_7h5FGCiOuaW9YlVC9iysVQxXnRfP-MWkU3hraF5K1HcQ2KMDROvVg/pub?start=true&loop=true&delayms=30000)
+[How to use this (in russian)](https://docs.google.com/presentation/d/e/2PACX-1vQrO13OqmhA_7h5FGCiOuaW9YlVC9iysVQxXnRfP-MWkU3hraF5K1HcQ2KMDROvVg/pub?start=true&loop=true&delayms=30000)
 
 ## Install
 
@@ -30,7 +30,7 @@ cd Web_Yolo_Mark
 
  - To edit backend open PyCharm in this folder, run after installing this dependencies (tested on top of Anaconda3)
  ```bash
- pip install flask-admin flask_login flask_sqlalchemy flask_user=1.* flask_compress flask_httpauth flask_restplus protobuf flask_dropzone flask_uploads flask-triangle  flask_restful  flask-locale flask-cors Flask-Caching Flask-BabelEx flask_babel
+ pip install flask-admin flask_login flask_sqlalchemy flask_user==1.* flask_compress flask_httpauth flask_restplus protobuf flask_dropzone flask_uploads flask-triangle  flask_restful  flask-locale flask-cors Flask-Caching Flask-BabelEx flask_babel
  ```
  
  - To edit Markup vector editing UI open WebStorm in ./assets/editor folder 
