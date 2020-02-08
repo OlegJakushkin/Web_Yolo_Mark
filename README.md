@@ -5,6 +5,8 @@ GUI for marking bounded boxes of objects in images for training neural network l
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Docker Pulls](https://img.shields.io/docker/pulls/olejak/web_mark_yolo)](https://hub.docker.com/r/olejak/web_mark_yolo)
 
+[!How to use this (in russian)](https://docs.google.com/presentation/d/e/2PACX-1vQrO13OqmhA_7h5FGCiOuaW9YlVC9iysVQxXnRfP-MWkU3hraF5K1HcQ2KMDROvVg/pub?start=true&loop=true&delayms=30000)
+
 ## Install
 
 ### From Dockerhub
