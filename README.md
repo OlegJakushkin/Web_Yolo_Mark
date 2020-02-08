@@ -1,9 +1,9 @@
 # Web_Yolo_Mark
 GUI for marking bounded boxes of objects in images for training neural network like Yolo 
 
-[![CircleCI](https://circleci.com/gh/spbuCAE/PyCAE.svg?style=svg)](https://circleci.com/gh/OlegJakushkin/Web_Yolo_Mark)
+[![CircleCI](https://circleci.com/gh/OlegJakushkin/Web_Yolo_Mark.svg?style=svg)](https://circleci.com/gh/OlegJakushkin/Web_Yolo_Mark)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Docker Pulls](https://img.shields.io/docker/pulls/olejak/pycae)](https://hub.docker.com/r/olejak/web_mark_yolo)
+[![Docker Pulls](https://img.shields.io/docker/pulls/olejak/web_mark_yolo)](https://hub.docker.com/r/olejak/web_mark_yolo)
 
 ## Install
 
