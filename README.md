@@ -30,7 +30,7 @@ cd Web_Yolo_Mark
 
  - To edit backend open PyCharm in this folder, run after installing this dependencies (tested on top of Anaconda3)
  ```bash
- pip install flask-admin flask_login flask_sqlalchemy flask_user=1.* flask_compress flask_httpauth flask_restplus protobuf flask_dropzone flask_uploads flask-triangle  flask_restful  flask-locale flask-cors Flask-Caching Flask-BabelEx flask_babel
+ pip install flask-admin flask_login flask_sqlalchemy flask_user==1.* flask_compress flask_httpauth flask_restplus protobuf flask_dropzone flask_uploads flask-triangle  flask_restful  flask-locale flask-cors Flask-Caching Flask-BabelEx flask_babel
  ```
  
  - To edit Markup vector editing UI open WebStorm in ./assets/editor folder 
