@@ -12,7 +12,7 @@ pg.stylebar = function () {
         // TODO: move tagify logic into seprate component
         var input = document.querySelector('input[name=tags3]');
 
-        $.getJSON('http://127.0.0.1:5002/api/v1/ObjectClassesREST', function (emp) {
+        $.getJSON('/api/v1/ObjectClassesREST', function (emp) {
 
             tagify = new Tagify(input, {
                 transformTag: transformTag,
