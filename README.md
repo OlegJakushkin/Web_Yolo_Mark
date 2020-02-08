@@ -18,6 +18,7 @@ start
  - with db and logs directory on a host node `/full/path/to/a/shared/db/folder/`
 
 ```bash
+docker pull olejak/web_mark_yolo:latest
 docker run -d -p 8890:5002  -e ADMIN_PASSWORD=Sc@_9Nt1f1c -e FLASK_PORT=5002 -e FLASK_ADDR='0.0.0.0' -v /full/path/to/a/shared/images/folder/:/opt/marker/uploads -v /full/path/to/a/shared/db/folder/:/opt/marker/db olejak/web_mark_yolo:latest
 ```
 
@@ -38,5 +39,5 @@ cd Web_Yolo_Mark
  - To simply build and run use next commands
 ```bash
 docker build -t oj/web_mark_yolo:latest .
-docker run -d -p 8890:5002  -e ADMIN_PASSWORD=Sc@_9Nt1f1c -e FLASK_PORT=5002 -e FLASK_ADDR='0.0.0.0' -v /full/path/to/a/shared/images/folder/:/opt/marker/uploads -v /full/path/to/a/shared/db/folder/:/opt/marker/db olejak/web_mark_yolo:latest
+docker run -d -p 8890:5002  -e ADMIN_PASSWORD=Sc@_9Nt1f1c -e FLASK_PORT=5002 -e FLASK_ADDR='0.0.0.0' -v /full/path/to/a/shared/images/folder/:/opt/marker/uploads -v /full/path/to/a/shared/db/folder/:/opt/marker/db oj/web_mark_yolo:latest
 ```
