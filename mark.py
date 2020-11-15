@@ -4,7 +4,7 @@ from MarkFlask import *
 app = None
 import logging
 from logging.handlers import TimedRotatingFileHandler
-
+from fastcore.utils import Path
 
 def main(p=80):
     port = os.getenv('FLASK_PORT', str(p))
@@ -15,9 +15,12 @@ def main(p=80):
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
 
+    if not os.path.isfile(logpath):
+       Path(logpath).mk_write('')
+
     handler = TimedRotatingFileHandler(filename=logpath,
                                        when="w0",
-                                       backupCount=5)
+                                       backupCount=5 )
     logger.handlers = []
     logger.addHandler(handler)
 
